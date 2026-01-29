@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prévention & Risques – Chauffeur Routier</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
       --primary: #1e3a8a;
@@ -13,48 +14,41 @@
       --card: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* MENU */
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      z-index: 1000;
     }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    nav h1 { color: var(--primary); font-size: 1.2rem; }
+
+    nav ul { list-style: none; display: flex; gap: 1rem; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; }
+    nav a:hover { color: var(--secondary); }
 
     header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 3rem 1.5rem;
+      padding: 4rem 1.5rem;
       text-align: center;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+    header h2 { font-size: 2.3rem; margin-bottom: 1rem; }
 
-    header p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.1rem;
-    }
+    section { padding: 3rem 1.5rem; max-width: 1100px; margin: auto; }
 
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-    }
+    h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 2rem; }
 
     .cards {
       display: grid;
@@ -64,18 +58,21 @@
 
     .card {
       background: var(--card);
-      padding: 1.5rem;
-      border-radius: 1rem;
+      padding: 1.8rem;
+      border-radius: 1.2rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       transition: transform 0.2s ease;
+      text-align: center;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+    .card i { font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; }
 
-    ul {
-      margin-left: 1.2rem;
+    .card:hover { transform: translateY(-5px); }
+
+    img {
+      width: 100%;
+      border-radius: 1rem;
+      margin-top: 1rem;
     }
 
     footer {
@@ -86,79 +83,71 @@
       margin-top: 3rem;
     }
 
-    footer p {
-      font-size: 0.9rem;
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav ul { flex-wrap: wrap; justify-content: center; }
+      header h2 { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
+<nav>
+  <h1><i class="fa-solid fa-truck"></i> Chauffeur Routier</h1>
+  <ul>
+    <li><a href="#objectifs">Objectifs</a></li>
+    <li><a href="#risques">Risques</a></li>
+    <li><a href="#routine">Routine</a></li>
+    <li><a href="#prevention">Prévention</a></li>
+  </ul>
+</nav>
+
 <header>
-  <h1>Prévention et risques du métier de chauffeur routier</h1>
-  <p>Chef-d’œuvre Bac Pro – Sensibilisation aux risques physiques et mentaux et solutions de prévention adaptées aux chauffeurs routiers</p>
+  <h2>Prévention et risques du métier de chauffeur routier</h2>
+  <p>Chef-d’œuvre Bac Pro – Sensibilisation et solutions concrètes</p>
 </header>
 
-<section>
-  <h2>Objectifs du projet</h2>
+<section id="objectifs">
+  <h3><i class="fa-solid fa-bullseye"></i> Objectifs du projet</h3>
   <div class="cards">
-    <div class="card">Prévenir les douleurs physiques : dos, cervicales, articulations</div>
-    <div class="card">Sensibiliser aux risques mentaux : stress, solitude, fatigue</div>
-    <div class="card">Proposer des solutions simples et efficaces</div>
-    <div class="card">Mettre en lien la théorie et la pratique professionnelle</div>
+    <div class="card"><i class="fa-solid fa-heart-pulse"></i> Prévenir les douleurs physiques</div>
+    <div class="card"><i class="fa-solid fa-brain"></i> Sensibiliser aux risques mentaux</div>
+    <div class="card"><i class="fa-solid fa-shield-halved"></i> Réduire les risques professionnels</div>
   </div>
 </section>
 
-<section>
-  <h2>Matières associées</h2>
+<section id="risques">
+  <h3><i class="fa-solid fa-triangle-exclamation"></i> Risques du métier</h3>
   <div class="cards">
-    <div class="card"><strong>PSE</strong><br>Prévention, santé et environnement : comprendre les risques et les réduire</div>
-    <div class="card"><strong>Conduite routière</strong><br>Postures, sécurité et gestes professionnels</div>
-    <div class="card"><strong>Éducation physique et sportive</strong><br>Mettre en pratique la prévention par l’activité physique</div>
+    <div class="card"><i class="fa-solid fa-person-falling"></i> Douleurs de dos et TMS</div>
+    <div class="card"><i class="fa-solid fa-heart"></i> Maladies cardiovasculaires</div>
+    <div class="card"><i class="fa-solid fa-user-slash"></i> Solitude et dépression</div>
   </div>
 </section>
 
-<section>
-  <h2>Risques liés au métier</h2>
+<section id="routine">
+  <h3><i class="fa-solid fa-dumbbell"></i> Routine d’échauffement</h3>
   <div class="cards">
-    <div class="card">
-      <ul>
-        <li>Douleurs de dos et cervicales</li>
-        <li>Troubles musculosquelettiques</li>
-        <li>Maladies cardiovasculaires</li>
-        <li>Obésité liée à une mauvaise alimentation</li>
-        <li>Stress, solitude, dépression</li>
-      </ul>
-    </div>
-    <div class="card">
-      Les chauffeurs routiers sont souvent seuls pendant plusieurs jours, ce qui peut impacter fortement la santé mentale et le bien‑être général.
-    </div>
+    <div class="card">Rotation de la nuque</div>
+    <div class="card">Étirement des épaules</div>
+    <div class="card">Rotation du tronc</div>
+    <div class="card">Étirement bras et poignets</div>
+    <div class="card">Étirement hanches et jambes</div>
+    <div class="card">Étirement du dos</div>
   </div>
 </section>
 
-<section>
-  <h2>Routine d’échauffement (5 à 7 minutes)</h2>
+<section id="prevention">
+  <h3><i class="fa-solid fa-check"></i> Avantages de la prévention</h3>
   <div class="cards">
-    <div class="card">Rotation de la nuque – soulage les tensions cervicales</div>
-    <div class="card">Étirement des épaules – relâche les trapèzes</div>
-    <div class="card">Rotation du tronc – mobilise la colonne vertébrale</div>
-    <div class="card">Étirement bras et poignets – prévient les tensions</div>
-    <div class="card">Étirement hanches et jambes – soulage les jambes</div>
-    <div class="card">Étirement du dos – détend la colonne vertébrale</div>
-  </div>
-</section>
-
-<section>
-  <h2>Avantages de la prévention</h2>
-  <div class="cards">
-    <div class="card">✔ Amélioration du confort et de la santé</div>
-    <div class="card">✔ Réduction des douleurs et tensions</div>
-    <div class="card">✔ Aucun matériel spécifique nécessaire</div>
-    <div class="card">✔ Facile à réaliser avant ou après le trajet</div>
+    <div class="card"><i class="fa-solid fa-thumbs-up"></i> Meilleure santé</div>
+    <div class="card"><i class="fa-solid fa-person-running"></i> Plus de confort</div>
+    <div class="card"><i class="fa-solid fa-clock"></i> Rapide et efficace</div>
   </div>
 </section>
 
 <footer>
-  <p>Chef‑d’œuvre Bac Pro – CHARFF Lucas · CHARFF Alban · PAYAN Nahik</p>
+  <p>Chef-d’œuvre Bac Pro – CHARFF Lucas · CHARFF Alban · PAYAN Nahik</p>
 </footer>
 
 </body>
