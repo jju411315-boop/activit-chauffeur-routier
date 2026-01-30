@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prévention & Risques – Chauffeur Routier</title>
+
+  <!-- Icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
       --primary: #1e3a8a;
@@ -14,15 +17,34 @@
       --card: #ffffff;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+    /* MODE SOMBRE */
+    body.dark {
+      --bg: #020617;
+      --text: #f1f5f9;
+      --card: #020617;
+      --primary: #38bdf8;
+      --secondary: #0ea5e9;
+    }
 
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
 
     /* MENU */
     nav {
       position: sticky;
       top: 0;
-      background: white;
+      background: var(--card);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -31,12 +53,38 @@
       z-index: 1000;
     }
 
-    nav h1 { color: var(--primary); font-size: 1.2rem; }
+    nav h1 {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
 
-    nav ul { list-style: none; display: flex; gap: 1rem; }
-    nav a { text-decoration: none; color: var(--text); font-weight: 500; }
-    nav a:hover { color: var(--secondary); }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
 
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Bouton sombre */
+    .dark-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* HEADER */
     header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
@@ -44,12 +92,26 @@
       text-align: center;
     }
 
-    header h2 { font-size: 2.3rem; margin-bottom: 1rem; }
+    header h2 {
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease;
+    }
 
-    section { padding: 3rem 1.5rem; max-width: 1100px; margin: auto; }
+    /* SECTIONS */
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-    h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 2rem; }
+    h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
 
+    /* CARTES */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -61,145 +123,175 @@
       padding: 1.8rem;
       border-radius: 1.2rem;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease;
       text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.8s forwards;
     }
 
-    .card i { font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; }
-
-    .card:hover { transform: translateY(-5px); }
-
-    img {
-      width: 100%;
-      border-radius: 1rem;
-      margin-top: 1rem;
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
 
+    .card i {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* FOOTER */
     footer {
-      background: #020617;
+      margin-top: 50px;
+      padding: 20px;
+      background: var(--primary);
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 3rem;
+      font-size: 14px;
     }
 
     /* MOBILE */
     @media (max-width: 768px) {
-      nav ul { flex-wrap: wrap; justify-content: center; }
-      header h2 { font-size: 1.8rem; }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      header h2 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
-  <style>
-.footer {
-  margin-top: 50px;
-  padding: 20px;
-  background: #0a3d62;
-  color: white;
-  text-align: center;
-  font-size: 14px;
-}
-</style>
 
 <body>
 
+<!-- MENU -->
 <nav>
   <h1><i class="fa-solid fa-truck"></i> Chauffeur Routier</h1>
+
   <ul>
     <li><a href="#objectifs">Objectifs</a></li>
     <li><a href="#risques">Risques</a></li>
     <li><a href="#routine">Routine</a></li>
     <li><a href="#prevention">Prévention</a></li>
+
+    <!-- Bouton mode sombre -->
+    <li>
+      <button class="dark-btn" onclick="toggleDark()">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </li>
   </ul>
 </nav>
 
+<!-- HEADER -->
 <header>
   <h2>Prévention et risques du métier de chauffeur routier</h2>
   <p>Chef-d’œuvre Bac Pro – Sensibilisation et solutions concrètes</p>
 </header>
 
+<!-- OBJECTIFS -->
 <section id="objectifs">
-  <h3><i class="fa-solid fa-bullseye"></i> Objectifs du projet</h3>
+  <h3><i class="fa-solid fa-bullseye"></i> Objectifs</h3>
+
   <div class="cards">
-    <div class="card"><i class="fa-solid fa-heart-pulse"></i> Prévenir les douleurs physiques</div>
-    <div class="card"><i class="fa-solid fa-brain"></i> Sensibiliser aux risques mentaux</div>
-    <div class="card"><i class="fa-solid fa-shield-halved"></i> Réduire les risques professionnels</div>
+    <div class="card"><i class="fa-solid fa-heart-pulse"></i><p>Prévenir les douleurs</p></div>
+    <div class="card"><i class="fa-solid fa-brain"></i><p>Risques mentaux</p></div>
+    <div class="card"><i class="fa-solid fa-shield-halved"></i><p>Sécurité</p></div>
   </div>
 </section>
 
+<!-- RISQUES -->
 <section id="risques">
-  <h3><i class="fa-solid fa-triangle-exclamation"></i> Risques du métier</h3>
+  <h3><i class="fa-solid fa-triangle-exclamation"></i> Risques</h3>
+
   <div class="cards">
-    <div class="card"><i class="fa-solid fa-person-falling"></i> Douleurs de dos et TMS</div>
-    <div class="card"><i class="fa-solid fa-heart"></i> Maladies cardiovasculaires</div>
-    <div class="card"><i class="fa-solid fa-user-slash"></i> Solitude et dépression</div>
+    <div class="card"><i class="fa-solid fa-person-falling"></i><p>Dos & TMS</p></div>
+    <div class="card"><i class="fa-solid fa-heart"></i><p>Cardio</p></div>
+    <div class="card"><i class="fa-solid fa-user-slash"></i><p>Solitude</p></div>
   </div>
 </section>
 
+<!-- ROUTINE -->
 <section id="routine">
-  <h3><i class="fa-solid fa-dumbbell"></i> Routine d’échauffement</h3>
-  <p style="margin-bottom:1.5rem">Clique sur un exercice pour voir le détail.</p>
+  <h3><i class="fa-solid fa-dumbbell"></i> Routine</h3>
+  <p>Clique sur un exercice pour voir le détail.</p>
 
   <div class="cards">
 
     <a href="nuque.html" class="card">
       <i class="fa-solid fa-head-side-virus"></i>
-      <h4>Rotation de la nuque</h4>
-      <p>Voir l’exercice</p>
+      <h4>Nuque</h4>
     </a>
 
     <a href="epaules.html" class="card">
       <i class="fa-solid fa-person-walking"></i>
-      <h4>Étirement des épaules</h4>
-      <p>Voir l’exercice</p>
+      <h4>Épaules</h4>
     </a>
 
     <a href="tronc.html" class="card">
       <i class="fa-solid fa-rotate"></i>
-      <h4>Rotation du tronc</h4>
-      <p>Voir l’exercice</p>
+      <h4>Tronc</h4>
     </a>
 
     <a href="poignets.html" class="card">
       <i class="fa-solid fa-hand"></i>
-      <h4>Bras et poignets</h4>
-      <p>Voir l’exercice</p>
+      <h4>Poignets</h4>
     </a>
 
     <a href="jambes.html" class="card">
       <i class="fa-solid fa-person-running"></i>
-      <h4>Hanches et jambes</h4>
-      <p>Voir l’exercice</p>
+      <h4>Jambes</h4>
     </a>
 
     <a href="dos.html" class="card">
       <i class="fa-solid fa-person-rays"></i>
-      <h4>Étirement du dos</h4>
-      <p>Voir l’exercice</p>
+      <h4>Dos</h4>
     </a>
 
   </div>
 </section>
 
-<!-- PAGES DÉTAILLÉES DES EXERCICES -->
-
-
+<!-- PRÉVENTION -->
 <section id="prevention">
-  <h3><i class="fa-solid fa-check"></i> Avantages de la prévention</h3>
+  <h3><i class="fa-solid fa-check"></i> Prévention</h3>
+
   <div class="cards">
-    <div class="card"><i class="fa-solid fa-thumbs-up"></i> Meilleure santé</div>
-    <div class="card"><i class="fa-solid fa-person-running"></i> Plus de confort</div>
-    <div class="card"><i class="fa-solid fa-clock"></i> Rapide et efficace</div>
+    <div class="card"><i class="fa-solid fa-thumbs-up"></i><p>Santé</p></div>
+    <div class="card"><i class="fa-solid fa-person-running"></i><p>Confort</p></div>
+    <div class="card"><i class="fa-solid fa-clock"></i><p>Rapide</p></div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>Chef-d’œuvre Bac Pro – CHARFF Lucas · CHARFF Alban · PAYAN Nahik</p>
-</footer>
-<footer class="footer">
-  <p>© 2026 - Site créé par ALBAN</p>
+  <p>© 2026 – Site créé par ALBAN CHARFF</p>
   <p>Projet Prévention Chauffeur Routier</p>
 </footer>
+
+<!-- SCRIPT MODE SOMBRE -->
+<script>
+  function toggleDark() {
+    document.body.classList.toggle("dark");
+  }
+</script>
 
 </body>
 </html>
