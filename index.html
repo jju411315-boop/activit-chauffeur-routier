@@ -10,6 +10,15 @@
 
 <style>
 
+  .stats{
+background:#e0f2fe;
+padding:15px;
+border-radius:15px;
+text-align:center;
+margin-bottom:20px;
+font-weight:bold;
+}
+
 :root{
 --primary:#1e3a8a;
 --secondary:#0ea5e9;
@@ -303,11 +312,32 @@ String(sec).padStart(2,"0");
 /* PROGRESSION */
 
 let progress = localStorage.getItem("progress") || 0;
+let doneToday = localStorage.getItem("doneToday") || 0;
+
+document.getElementById("doneCount").textContent = doneToday;
+
 const max=6;
 
 updateBar();
 
 function addProgress(){
+
+if(progress<max){
+
+progress++;
+doneToday++;
+
+localStorage.setItem("progress",progress);
+localStorage.setItem("doneToday",doneToday);
+
+document.getElementById("doneCount").textContent = doneToday;
+
+updateBar();
+
+}
+
+}
+
 
 if(progress<max){
 progress++;
