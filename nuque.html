@@ -119,10 +119,11 @@ if(time<=0){
 clearInterval(interval);
 alert("🎓 Félicitations ! Exercice terminé !");
 
-let total = localStorage.getItem("totalDone") || 0;
-total++;
+let done = localStorage.getItem("doneToday") || 0;
+done++;
 
-localStorage.setItem("totalDone", total);
+localStorage.setItem("doneToday", done);
+
 
 
 }
