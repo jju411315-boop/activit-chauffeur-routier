@@ -287,6 +287,14 @@ margin-top:50px;
 </footer>
 
 <script>
+let today = new Date().toDateString();
+let savedDay = localStorage.getItem("savedDay");
+
+if(savedDay !== today){
+  localStorage.setItem("savedDay", today);
+  localStorage.setItem("doneToday", 0);
+  localStorage.setItem("progress", 0);
+}
 
 /* MODE SOMBRE */
 function toggleDark(){
