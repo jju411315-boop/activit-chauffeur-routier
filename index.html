@@ -1,296 +1,341 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prévention & Risques – Chauffeur Routier</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Icônes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Prévention Chauffeur Routier</title>
 
-  <style>
-    :root {
-      --primary: #1e3a8a;
-      --secondary: #0ea5e9;
-      --bg: #f8fafc;
-      --text: #0f172a;
-      --card: #ffffff;
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    /* MODE SOMBRE */
-    body.dark {
-      --bg: #020617;
-      --text: #f1f5f9;
-      --card: #020617;
-      --primary: #38bdf8;
-      --secondary: #0ea5e9;
-    }
+<style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
+:root{
+--primary:#1e3a8a;
+--secondary:#0ea5e9;
+--bg:#f8fafc;
+--text:#0f172a;
+--card:#ffffff;
+}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-    }
+body.dark{
+--bg:#020617;
+--text:#f1f5f9;
+--card:#020617;
+--primary:#38bdf8;
+}
 
-    /* MENU */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--card);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      z-index: 1000;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Segoe UI,Tahoma;
+}
 
-    nav h1 {
-      color: var(--primary);
-      font-size: 1.2rem;
-    }
+body{
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
+/* MENU */
 
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-    }
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:var(--card);
+box-shadow:0 4px 12px rgba(0,0,0,.1);
+position:sticky;
+top:0;
+z-index:1000;
+}
 
-    nav a:hover {
-      color: var(--secondary);
-    }
+nav ul{
+display:flex;
+list-style:none;
+gap:15px;
+align-items:center;
+}
 
-    /* Bouton sombre */
-    .dark-btn {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: var(--text);
-    }
+nav a{
+text-decoration:none;
+color:var(--text);
+font-weight:500;
+}
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
+.dark-btn{
+background:none;
+border:none;
+font-size:20px;
+cursor:pointer;
+}
 
-    header h2 {
-      font-size: 2.3rem;
-      margin-bottom: 1rem;
-      animation: fadeIn 1s ease;
-    }
+/* HEADER */
 
-    /* SECTIONS */
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-    }
+header{
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:white;
+text-align:center;
+padding:60px 20px;
+}
 
-    h3 {
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-    }
+/* SECTIONS */
 
-    /* CARTES */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
+section{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
 
-    .card {
-      background: var(--card);
-      padding: 1.8rem;
-      border-radius: 1.2rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      text-align: center;
-      text-decoration: none;
-      color: var(--text);
-      transition: transform 0.3s, box-shadow 0.3s;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: slideUp 0.8s forwards;
-    }
+h3{
+color:var(--primary);
+margin-bottom:20px;
+font-size:28px;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
+/* PROGRESSION */
 
-    .card i {
-      font-size: 2rem;
-      color: var(--secondary);
-      margin-bottom: 1rem;
-    }
+.progress-container{
+background:#e5e7eb;
+border-radius:30px;
+overflow:hidden;
+height:28px;
+margin:15px 0;
+}
 
-    /* ANIMATIONS */
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--secondary),var(--primary));
+color:white;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.5s;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+/* TIMER */
 
-    /* FOOTER */
-    footer {
-      margin-top: 50px;
-      padding: 20px;
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      font-size: 14px;
-    }
+.timer{
+font-size:20px;
+margin:15px 0;
+font-weight:bold;
+text-align:center;
+}
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+/* CARDS */
 
-      header h2 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+border-radius:20px;
+text-align:center;
+text-decoration:none;
+color:var(--text);
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+transition:.3s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card i{
+font-size:32px;
+color:var(--secondary);
+margin-bottom:10px;
+}
+
+/* BOUTON FIN */
+
+.finish-btn{
+display:none;
+margin:25px auto;
+padding:12px 25px;
+background:var(--secondary);
+border:none;
+border-radius:25px;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.finish-btn:hover{
+opacity:.9;
+}
+
+/* FOOTER */
+
+footer{
+background:var(--primary);
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+
+</style>
 </head>
 
 <body>
 
-<!-- MENU -->
 <nav>
-  <h1><i class="fa-solid fa-truck"></i> Chauffeur Routier</h1>
+<h2><i class="fa-solid fa-truck"></i> Chauffeur Routier</h2>
 
-  <ul>
-    <li><a href="#objectifs">Objectifs</a></li>
-    <li><a href="#risques">Risques</a></li>
-    <li><a href="#routine">Routine</a></li>
-    <li><a href="#prevention">Prévention</a></li>
+<ul>
+<li><a href="#routine">Routine</a></li>
 
-    <!-- Bouton mode sombre -->
-    <li>
-      <button class="dark-btn" onclick="toggleDark()">
-        <i class="fa-solid fa-moon"></i>
-      </button>
-    </li>
-  </ul>
+<li>
+<button class="dark-btn" onclick="toggleDark()">
+<i class="fa-solid fa-moon"></i>
+</button>
+</li>
+</ul>
 </nav>
 
-<!-- HEADER -->
 <header>
-  <h2>Prévention et risques du métier de chauffeur routier</h2>
-  <p>Chef-d’œuvre Bac Pro – Sensibilisation et solutions concrètes</p>
+<h1>Routine d’échauffement</h1>
+<p>Prévention des risques professionnels</p>
 </header>
 
-<!-- OBJECTIFS -->
-<section id="objectifs">
-  <h3><i class="fa-solid fa-bullseye"></i> Objectifs</h3>
-
-  <div class="cards">
-    <div class="card"><i class="fa-solid fa-heart-pulse"></i><p>Prévenir les douleurs</p></div>
-    <div class="card"><i class="fa-solid fa-brain"></i><p>Risques mentaux</p></div>
-    <div class="card"><i class="fa-solid fa-shield-halved"></i><p>Sécurité</p></div>
-  </div>
-</section>
-
-<!-- RISQUES -->
-<section id="risques">
-  <h3><i class="fa-solid fa-triangle-exclamation"></i> Risques</h3>
-
-  <div class="cards">
-    <div class="card"><i class="fa-solid fa-person-falling"></i><p>Dos & TMS</p></div>
-    <div class="card"><i class="fa-solid fa-heart"></i><p>Cardio</p></div>
-    <div class="card"><i class="fa-solid fa-user-slash"></i><p>Solitude</p></div>
-  </div>
-</section>
-
-<!-- ROUTINE -->
 <section id="routine">
-  <h3><i class="fa-solid fa-dumbbell"></i> Routine</h3>
-  <p>Clique sur un exercice pour voir le détail.</p>
 
-  <div class="cards">
+<h3>Ta séance</h3>
 
-    <a href="nuque.html" class="card">
-      <i class="fa-solid fa-head-side-virus"></i>
-      <h4>Nuque</h4>
-    </a>
+<div class="timer">
+⏱️ Temps : <span id="time">00:00</span>
+</div>
 
-    <a href="epaules.html" class="card">
-      <i class="fa-solid fa-person-walking"></i>
-      <h4>Épaules</h4>
-    </a>
+<p>Progression :</p>
 
-    <a href="tronc.html" class="card">
-      <i class="fa-solid fa-rotate"></i>
-      <h4>Tronc</h4>
-    </a>
+<div class="progress-container">
+<div id="progress" class="progress-bar">0%</div>
+</div>
 
-    <a href="poignets.html" class="card">
-      <i class="fa-solid fa-hand"></i>
-      <h4>Poignets</h4>
-    </a>
+<p>Clique sur chaque exercice :</p>
 
-    <a href="jambes.html" class="card">
-      <i class="fa-solid fa-person-running"></i>
-      <h4>Jambes</h4>
-    </a>
+<div class="cards">
 
-    <a href="dos.html" class="card">
-      <i class="fa-solid fa-person-rays"></i>
-      <h4>Dos</h4>
-    </a>
+<a href="nuque.html" class="card" onclick="addProgress()">
+<i class="fa-solid fa-head-side-virus"></i>
+<h4>Nuque</h4>
+</a>
 
-  </div>
+<a href="epaules.html" class="card" onclick="addProgress()">
+<i class="fa-solid fa-person-walking"></i>
+<h4>Épaules</h4>
+</a>
+
+<a href="tronc.html" class="card" onclick="addProgress()">
+<i class="fa-solid fa-rotate"></i>
+<h4>Tronc</h4>
+</a>
+
+<a href="poignets.html" class="card" onclick="addProgress()">
+<i class="fa-solid fa-hand"></i>
+<h4>Poignets</h4>
+</a>
+
+<a href="jambes.html" class="card" onclick="addProgress()">
+<i class="fa-solid fa-person-running"></i>
+<h4>Jambes</h4>
+</a>
+
+<a href="dos.html" class="card" onclick="addProgress()">
+<i class="fa-solid fa-person-rays"></i>
+<h4>Dos</h4>
+</a>
+
+</div>
+
+<button id="finishBtn" class="finish-btn" onclick="finish()">
+🎉 Séance terminée
+</button>
+
 </section>
 
-<!-- PRÉVENTION -->
-<section id="prevention">
-  <h3><i class="fa-solid fa-check"></i> Prévention</h3>
-
-  <div class="cards">
-    <div class="card"><i class="fa-solid fa-thumbs-up"></i><p>Santé</p></div>
-    <div class="card"><i class="fa-solid fa-person-running"></i><p>Confort</p></div>
-    <div class="card"><i class="fa-solid fa-clock"></i><p>Rapide</p></div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <p>© 2026 – Site créé par ALBAN CHARFF</p>
-  <p>Projet Prévention Chauffeur Routier</p>
+<p>© 2026 - Site créé par JUJU411315</p>
 </footer>
 
-<!-- SCRIPT MODE SOMBRE -->
 <script>
-  function toggleDark() {
-    document.body.classList.toggle("dark");
-  }
+
+/* MODE SOMBRE */
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+/* TIMER */
+
+let seconds=0;
+
+setInterval(()=>{
+seconds++;
+let min=Math.floor(seconds/60);
+let sec=seconds%60;
+
+document.getElementById("time").textContent=
+String(min).padStart(2,"0")+":"+
+String(sec).padStart(2,"0");
+
+},1000);
+
+
+/* PROGRESSION */
+
+let progress = localStorage.getItem("progress") || 0;
+const max=6;
+
+updateBar();
+
+function addProgress(){
+
+if(progress<max){
+progress++;
+localStorage.setItem("progress",progress);
+updateBar();
+}
+
+}
+
+function updateBar(){
+
+const percent=Math.round((progress/max)*100);
+
+const bar=document.getElementById("progress");
+
+bar.style.width=percent+"%";
+bar.textContent=percent+"%";
+
+if(progress==max){
+document.getElementById("finishBtn").style.display="block";
+}
+
+}
+
+/* FIN */
+
+function finish(){
+
+alert("Bravo ! Séance terminée 🎉💪");
+
+localStorage.removeItem("progress");
+progress=0;
+updateBar();
+document.getElementById("finishBtn").style.display="none";
+
+}
+
 </script>
 
 </body>
