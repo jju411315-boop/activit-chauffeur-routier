@@ -3,29 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rotation du tronc</title>
+
+<title>tronc</title>
 
 <style>
-body{font-family:Arial;background:#f8fafc;margin:0;text-align:center}
-header{background:#1e3a8a;color:white;padding:2rem}
-section{max-width:800px;margin:auto;padding:2rem}
-img{width:100%;max-width:400px;border-radius:15px;margin:1.5rem 0}
-a{background:#0ea5e9;color:white;padding:10px 20px;text-decoration:none;border-radius:8px}
+
+body{
+font-family:Segoe UI,Tahoma;
+background:#f8fafc;
+text-align:center;
+padding:20px;
+}
+
+h1{
+color:#1e3a8a;
+}
+
+img{
+max-width:300px;
+width:100%;
+border-radius:15px;
+margin:20px 0;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+.timer{
+font-size:28px;
+margin:15px 0;
+font-weight:bold;
+}
+
+.progress-container{
+background:#e5e7eb;
+border-radius:20px;
+height:25px;
+overflow:hidden;
+margin:20px 0;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#0ea5e9,#1e3a8a);
+transition:.3s;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#0ea5e9;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.back{
+background:#1e3a8a;
+}
+
 </style>
 </head>
 
 <body>
 
-<header><h1>Rotation du tronc</h1></header>
+<h1>tronc</h1>
 
-<section>
 <img src="images/tronc.jpg.png">
 
 <p>Pivote ton buste doucement à droite puis à gauche.</p>
 <p>Garde le dos droit pendant l’exercice.</p>
 
-<a href="index.html">← Retour</a>
-</section>
+<div class="timer" id="time">01:30</div>
+
+<div class="progress-container">
+<div id="bar" class="progress-bar"></div>
+</div>
+
+<button onclick="start()">▶️ Démarrer le chrono</button>
+
+<button class="back" onclick="location.href='index.html'">
+⬅️ Retour
+</button>
+
+<script>
+
+let max = 90; // 1 min 30
+let time = max;
+let interval;
+
+function start(){
+
+if(interval) return;
+
+interval = setInterval(()=>{
+
+time--;
+
+let min = Math.floor(time/60);
+let sec = time%60;
+
+document.getElementById("time").textContent =
+String(min).padStart(2,"0")+":"+
+String(sec).padStart(2,"0");
+
+let percent = ((max-time)/max)*100;
+document.getElementById("bar").style.width = percent + "%";
+
+if(time<=0){
+
+clearInterval(interval);
+alert("Exercice terminé 🎉💪");
+
+}
+
+},1000);
+
+}
+
+</script>
 
 </body>
 </html>
+
+
+
+
+
+
