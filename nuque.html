@@ -119,10 +119,12 @@ if(time<=0){
 clearInterval(interval);
 alert("🎓 Félicitations ! Exercice terminé !");
 
-let done = localStorage.getItem("doneToday") || 0;
+// Enregistrer exercice terminé
+let done = Number(localStorage.getItem("doneToday")) || 0;
 done++;
 
 localStorage.setItem("doneToday", done);
+
 
 
 
