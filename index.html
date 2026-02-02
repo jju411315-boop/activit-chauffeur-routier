@@ -307,6 +307,13 @@ String(min).padStart(2,"0")+":"+
 String(sec).padStart(2,"0");
 
 },1000);
+let totalDone = localStorage.getItem("totalDone") || 0;
+
+if(totalDone >= 6){
+setTimeout(()=>{
+alert("🎓 Félicitations ! Tu as terminé toute la séance 💪🔥");
+},500);
+}
 
 
 /* PROGRESSION */
