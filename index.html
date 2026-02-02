@@ -287,14 +287,16 @@ margin-top:50px;
 </footer>
 
 <script>
-let today = new Date().toDateString();
-let savedDay = localStorage.getItem("savedDay");
+// Lire compteur exercices
+let doneToday = Number(localStorage.getItem("doneToday")) || 0;
 
-if(savedDay !== today){
-  localStorage.setItem("savedDay", today);
-  localStorage.setItem("doneToday", 0);
-  localStorage.setItem("progress", 0);
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const el = document.getElementById("doneCount");
+  if (el) {
+    el.textContent = doneToday;
+  }
+});
+
 
 /* MODE SOMBRE */
 function toggleDark(){
