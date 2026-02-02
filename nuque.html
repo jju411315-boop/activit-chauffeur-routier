@@ -117,7 +117,13 @@ document.getElementById("bar").style.width = percent + "%";
 if(time<=0){
 
 clearInterval(interval);
-alert("Exercice terminé 🎉💪");
+alert("🎓 Félicitations ! Exercice terminé !");
+
+let total = localStorage.getItem("totalDone") || 0;
+total++;
+
+localStorage.setItem("totalDone", total);
+
 
 }
 
