@@ -216,6 +216,28 @@ margin-top:50px;
 <h1>Routine d’échauffement</h1>
 <p>Prévention des risques professionnels</p>
 </header>
+<section id="profile" style="text-align:center; margin:30px 0;">
+
+<h3>👤 Profil utilisateur</h3>
+
+<div id="profileBox">
+
+<p id="welcomeText"></p>
+
+<input type="text" id="usernameInput"
+placeholder="Entre ton prénom"
+style="padding:10px;border-radius:10px;border:1px solid #ccc;">
+
+<br><br>
+
+<button onclick="saveUser()"
+style="padding:8px 20px;border:none;border-radius:20px;background:#0ea5e9;color:white;cursor:pointer;">
+Enregistrer
+</button>
+
+</div>
+
+</section>
 
 <section id="routine">
 
@@ -294,7 +316,7 @@ margin-top:50px;
 <p>© 2026 - Site créé par JUJU411315</p>
 </footer>
 
-<script>
+
 <script>
 
 // MODE SOMBRE
@@ -307,6 +329,8 @@ const exercises = ["nuque","epaules","tronc","poignets","jambes","dos"];
 
 // Chargement
 document.addEventListener("DOMContentLoaded", function(){
+
+  loadUser();
 
   let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
   let history = JSON.parse(localStorage.getItem("history")) || [];
@@ -324,10 +348,46 @@ document.addEventListener("DOMContentLoaded", function(){
   bar.style.width = percent+"%";
   bar.textContent = percent+"%";
 
-  // Afficher historique
   showHistory(history);
 
 });
+
+// PROFIL
+function loadUser(){
+
+  let name = localStorage.getItem("username");
+
+  let welcome = document.getElementById("welcomeText");
+  let box = document.getElementById("profileBox");
+
+  if(name){
+
+    welcome.textContent = "Bienvenue, " + name + " 👋💪";
+    box.querySelector("input").style.display="none";
+    box.querySelector("button").textContent="Changer de nom";
+
+  }else{
+
+    welcome.textContent = "Crée ton profil 👇";
+
+  }
+
+}
+
+function saveUser(){
+
+  let input = document.getElementById("usernameInput");
+  let name = input.value.trim();
+
+  if(name.length < 2){
+    alert("Entre un vrai prénom 😉");
+    return;
+  }
+
+  localStorage.setItem("username", name);
+
+  location.reload();
+}
 
 // Aller exercice
 function goExercise(event, id, url){
@@ -347,30 +407,31 @@ function goExercise(event, id, url){
 
 }
 
-// Quand séance finie
+// Fin séance
 function finish(){
 
   let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
   let history = JSON.parse(localStorage.getItem("history")) || [];
 
   let today = new Date().toLocaleDateString();
+  let user = localStorage.getItem("username") || "Invité";
 
   history.push({
     date: today,
-    score: doneList.length + "/6"
+    score: doneList.length + "/6",
+    user: user
   });
 
   localStorage.setItem("history", JSON.stringify(history));
 
-  // Reset
   localStorage.removeItem("doneList");
 
-  alert("🎉 Séance enregistrée !");
+  alert("🎉 Séance sauvegardée !");
 
   location.reload();
 }
 
-// Afficher historique
+// Historique
 function showHistory(history){
 
   let list = document.getElementById("historyList");
@@ -383,18 +444,22 @@ function showHistory(history){
 
     let li = document.createElement("li");
 
-    li.style.background = "#e0f2fe";
-    li.style.margin = "8px 0";
-    li.style.padding = "10px";
-    li.style.borderRadius = "10px";
+    li.style.background="#e0f2fe";
+    li.style.padding="10px";
+    li.style.margin="8px 0";
+    li.style.borderRadius="10px";
 
-    li.textContent = item.date + " → " + item.score;
+    li.textContent =
+      item.date+" → "+item.score+" ("+item.user+")";
 
     list.appendChild(li);
 
   });
 
 }
+
+</script>
+
 
 </script>
 
