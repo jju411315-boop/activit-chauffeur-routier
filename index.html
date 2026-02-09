@@ -295,66 +295,108 @@ margin-top:50px;
 </footer>
 
 <script>
+<script>
 
 // MODE SOMBRE
 function toggleDark(){
   document.body.classList.toggle("dark");
 }
 
-// LECTURE COMPTEUR + BARRE
+// Exercices
+const exercises = ["nuque","epaules","tronc","poignets","jambes","dos"];
+
+// Chargement
 document.addEventListener("DOMContentLoaded", function(){
 
-  // Lire données
-  let done = Number(localStorage.getItem("doneToday")) || 0;
-  let progress = Number(localStorage.getItem("progress")) || 0;
+  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
+  let history = JSON.parse(localStorage.getItem("history")) || [];
 
-  // Afficher compteur
-  let countEl = document.getElementById("doneCount");
-  if(countEl){
-    countEl.textContent = done;
-  }
+  let done = doneList.length;
 
-  // Afficher barre
-  const max = 6;
+  // Compteur
+  document.getElementById("doneCount").textContent = done;
+
+  // Barre
+  const max = exercises.length;
+  let percent = Math.round((done/max)*100);
+
   let bar = document.getElementById("progress");
+  bar.style.width = percent+"%";
+  bar.textContent = percent+"%";
 
-  if(bar){
-    let percent = Math.round((progress/max)*100);
-    bar.style.width = percent + "%";
-    bar.textContent = percent + "%";
-  }
+  // Afficher historique
+  showHistory(history);
 
 });
 
-// Quand on clique sur un exercice
-function addProgress(){
+// Aller exercice
+function goExercise(event, id, url){
 
-  let progress = Number(localStorage.getItem("progress")) || 0;
-  let done = Number(localStorage.getItem("doneToday")) || 0;
-  const max = 6;
+  event.preventDefault();
 
-  if(progress < max){
+  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
 
-    progress++;
-    done++;
-
-    localStorage.setItem("progress", progress);
-    localStorage.setItem("doneToday", done);
-
+  if(!doneList.includes(id)){
+    doneList.push(id);
+    localStorage.setItem("doneList", JSON.stringify(doneList));
   }
 
-}
-function goExercise(event, url){
-
-  event.preventDefault(); // bloque lien
-
-  addProgress(); // ajoute +1
-
-  setTimeout(function(){
+  setTimeout(()=>{
     window.location.href = url;
-  }, 150); // laisse le temps d’enregistrer
+  },100);
 
 }
+
+// Quand séance finie
+function finish(){
+
+  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  let today = new Date().toLocaleDateString();
+
+  history.push({
+    date: today,
+    score: doneList.length + "/6"
+  });
+
+  localStorage.setItem("history", JSON.stringify(history));
+
+  // Reset
+  localStorage.removeItem("doneList");
+
+  alert("🎉 Séance enregistrée !");
+
+  location.reload();
+}
+
+// Afficher historique
+function showHistory(history){
+
+  let list = document.getElementById("historyList");
+
+  if(!list) return;
+
+  list.innerHTML = "";
+
+  history.reverse().forEach(item=>{
+
+    let li = document.createElement("li");
+
+    li.style.background = "#e0f2fe";
+    li.style.margin = "8px 0";
+    li.style.padding = "10px";
+    li.style.borderRadius = "10px";
+
+    li.textContent = item.date + " → " + item.score;
+
+    list.appendChild(li);
+
+  });
+
+}
+
+</script>
 
 </script>
 
