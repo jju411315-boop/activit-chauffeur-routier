@@ -336,6 +336,17 @@ function addProgress(){
   }
 
 }
+function goExercise(event, url){
+
+  event.preventDefault(); // bloque lien
+
+  addProgress(); // ajoute +1
+
+  setTimeout(function(){
+    window.location.href = url;
+  }, 150); // laisse le temps d’enregistrer
+
+}
 
 </script>
 
