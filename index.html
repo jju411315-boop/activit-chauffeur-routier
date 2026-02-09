@@ -287,108 +287,53 @@ margin-top:50px;
 </footer>
 
 <script>
-// Lire compteur exercices
-let doneToday = Number(localStorage.getItem("doneToday")) || 0;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const el = document.getElementById("doneCount");
-  if (el) {
-    el.textContent = doneToday;
+// MODE SOMBRE
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+// LECTURE COMPTEUR + BARRE
+document.addEventListener("DOMContentLoaded", function(){
+
+  // Lire données
+  let done = Number(localStorage.getItem("doneToday")) || 0;
+  let progress = Number(localStorage.getItem("progress")) || 0;
+
+  // Afficher compteur
+  let countEl = document.getElementById("doneCount");
+  if(countEl){
+    countEl.textContent = done;
   }
+
+  // Afficher barre
+  const max = 6;
+  let bar = document.getElementById("progress");
+
+  if(bar){
+    let percent = Math.round((progress/max)*100);
+    bar.style.width = percent + "%";
+    bar.textContent = percent + "%";
+  }
+
 });
 
-
-/* MODE SOMBRE */
-function toggleDark(){
-document.body.classList.toggle("dark");
-}
-
-/* TIMER */
-
-let seconds=0;
-
-setInterval(()=>{
-seconds++;
-let min=Math.floor(seconds/60);
-let sec=seconds%60;
-
-document.getElementById("time").textContent=
-String(min).padStart(2,"0")+":"+
-String(sec).padStart(2,"0");
-
-},1000);
-let totalDone = localStorage.getItem("totalDone") || 0;
-
-if(totalDone >= 6){
-setTimeout(()=>{
-alert("🎓 Félicitations ! Tu as terminé toute la séance 💪🔥");
-},500);
-}
-
-
-/* PROGRESSION */
-
-let progress = localStorage.getItem("progress") || 0;
-let doneToday = localStorage.getItem("doneToday") || 0;
-
-document.getElementById("doneCount").textContent = doneToday;
-
-const max=6;
-
-updateBar();
-
+// Quand on clique sur un exercice
 function addProgress(){
 
-if(progress<max){
+  let progress = Number(localStorage.getItem("progress")) || 0;
+  let done = Number(localStorage.getItem("doneToday")) || 0;
+  const max = 6;
 
-progress++;
-doneToday++;
+  if(progress < max){
 
-localStorage.setItem("progress",progress);
-localStorage.setItem("doneToday",doneToday);
+    progress++;
+    done++;
 
-document.getElementById("doneCount").textContent = doneToday;
+    localStorage.setItem("progress", progress);
+    localStorage.setItem("doneToday", done);
 
-updateBar();
-
-}
-
-}
-
-
-if(progress<max){
-progress++;
-localStorage.setItem("progress",progress);
-updateBar();
-}
-
-}
-
-function updateBar(){
-
-const percent=Math.round((progress/max)*100);
-
-const bar=document.getElementById("progress");
-
-bar.style.width=percent+"%";
-bar.textContent=percent+"%";
-
-if(progress==max){
-document.getElementById("finishBtn").style.display="block";
-}
-
-}
-
-/* FIN */
-
-function finish(){
-
-alert("Bravo ! Séance terminée 🎉💪");
-
-localStorage.removeItem("progress");
-progress=0;
-updateBar();
-document.getElementById("finishBtn").style.display="none";
+  }
 
 }
 
