@@ -213,6 +213,36 @@ margin-top:50px;
 </nav>
 
 <header>
+  <section id="auth" style="text-align:center;margin:30px 0;">
+
+<h3>🔐 Compte utilisateur</h3>
+
+<div id="loginBox">
+
+  <input id="loginName" type="text" placeholder="Nom"
+  style="padding:10px;border-radius:10px;border:1px solid #ccc;"><br><br>
+
+  <input id="loginPass" type="password" placeholder="Mot de passe"
+  style="padding:10px;border-radius:10px;border:1px solid #ccc;"><br><br>
+
+  <button onclick="login()"
+  style="padding:8px 25px;border-radius:20px;border:none;
+  background:#0ea5e9;color:white;cursor:pointer;">
+  Connexion / Inscription
+  </button>
+
+</div>
+
+<p id="welcomeText"></p>
+
+<button id="logoutBtn"
+onclick="logout()"
+style="display:none;margin-top:10px;">
+Déconnexion
+</button>
+
+</section>
+
 <h1>Routine d’échauffement</h1>
 <p>Prévention des risques professionnels</p>
 </header>
