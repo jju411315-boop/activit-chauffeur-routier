@@ -316,7 +316,6 @@ Enregistrer
 <p>© 2026 - Site créé par JUJU411315</p>
 </footer>
 
-
 <script>
 
 // MODE SOMBRE
@@ -389,21 +388,19 @@ function saveUser(){
   location.reload();
 }
 
-// Aller exercice
-function goExercise(event, id, url){
-
-  event.preventDefault();
+// AJOUT PROGRESSION (IMPORTANT)
+function addProgress(){
 
   let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
+
+  // Trouver l'exercice cliqué
+  let link = event.currentTarget.getAttribute("href");
+  let id = link.replace(".html","");
 
   if(!doneList.includes(id)){
     doneList.push(id);
     localStorage.setItem("doneList", JSON.stringify(doneList));
   }
-
-  setTimeout(()=>{
-    window.location.href = url;
-  },100);
 
 }
 
@@ -460,7 +457,6 @@ function showHistory(history){
 
 </script>
 
-</script>
 
 </body>
 </html>
