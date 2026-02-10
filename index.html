@@ -351,49 +351,49 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// PROFIL
+// AUTH
+
 function loadUser(){
 
-  let name = localStorage.getItem("username");
+  let user = JSON.parse(localStorage.getItem("user"));
 
-  let welcome = document.getElementById("welcomeText");
-  let box = document.getElementById("profileBox");
+  if(user){
 
-  if(name){
+    document.getElementById("welcomeText").textContent =
+      "Bienvenue, "+user.name+" 👋";
 
-    welcome.textContent = "Bienvenue, " + name + " 👋💪";
-    box.querySelector("input").style.display="none";
-    box.querySelector("button").textContent="Changer de nom";
-
-  }else{
-
-    welcome.textContent = "Crée ton profil 👇";
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("logoutBtn").style.display="inline";
 
   }
 
 }
 
-function saveUser(){
+function login(){
 
-  let input = document.getElementById("usernameInput");
-  let name = input.value.trim();
+  let name = document.getElementById("loginName").value.trim();
+  let pass = document.getElementById("loginPass").value.trim();
 
-  if(name.length < 2){
-    alert("Entre un vrai prénom 😉");
+  if(name.length<2 || pass.length<3){
+    alert("Nom ou mot de passe trop court");
     return;
   }
 
-  localStorage.setItem("username", name);
+  // Sauvegarde locale
+  localStorage.setItem("user", JSON.stringify({
+    name:name,
+    pass:pass
+  }));
 
   location.reload();
 }
-function addProgress(event){
 
-  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
-  let history = JSON.parse(localStorage.getItem("history")) || [];
+function logout(){
 
-  let link = event.currentTarget.getAttribute("href");
-  let id = link.replace(".html","");
+  localStorage.removeItem("user");
+  location.reload();
+}
+
 
   // Noms propres
   const names = {
