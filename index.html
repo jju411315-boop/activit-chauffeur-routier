@@ -323,35 +323,10 @@ function toggleDark(){
   document.body.classList.toggle("dark");
 }
 
-// Exercices
-const exercises = ["nuque","epaules","tronc","poignets","jambes","dos"];
 
-// Chargement
-document.addEventListener("DOMContentLoaded", function(){
-
-  loadUser();
-
-  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
-  let history = JSON.parse(localStorage.getItem("history")) || [];
-
-  let done = doneList.length;
-
-  // Compteur
-  document.getElementById("doneCount").textContent = done;
-
-  // Barre
-  const max = exercises.length;
-  let percent = Math.round((done/max)*100);
-
-  let bar = document.getElementById("progress");
-  bar.style.width = percent+"%";
-  bar.textContent = percent+"%";
-
-  showHistory(history);
-
-});
-
+// ===================
 // AUTH
+// ===================
 
 function loadUser(){
 
@@ -379,7 +354,6 @@ function login(){
     return;
   }
 
-  // Sauvegarde locale
   localStorage.setItem("user", JSON.stringify({
     name:name,
     pass:pass
@@ -395,15 +369,30 @@ function logout(){
 }
 
 
-  // Noms propres
-  const names = {
-    nuque:"Nuque",
-    epaules:"Épaules",
-    tronc:"Tronc",
-    poignets:"Poignets",
-    jambes:"Jambes",
-    dos:"Dos"
-  };
+// ===================
+// EXERCICES
+// ===================
+
+const exercises = ["nuque","epaules","tronc","poignets","jambes","dos"];
+
+const names = {
+  nuque:"Nuque",
+  epaules:"Épaules",
+  tronc:"Tronc",
+  poignets:"Poignets",
+  jambes:"Jambes",
+  dos:"Dos"
+};
+
+
+// Quand on clique sur une carte
+function addProgress(event){
+
+  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  let link = event.currentTarget.getAttribute("href");
+  let id = link.replace("./","").replace(".html","");
 
   if(!doneList.includes(id)){
 
@@ -411,7 +400,8 @@ function logout(){
     localStorage.setItem("doneList", JSON.stringify(doneList));
 
     let today = new Date().toLocaleDateString();
-    let user = localStorage.getItem("username") || "Invité";
+    let userObj = JSON.parse(localStorage.getItem("user"));
+    let user = userObj ? userObj.name : "Invité";
 
     history.push({
       date: today,
@@ -425,14 +415,47 @@ function logout(){
 }
 
 
-// Fin séance
+// ===================
+// CHARGEMENT
+// ===================
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  loadUser();
+
+  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
+  let history = JSON.parse(localStorage.getItem("history")) || [];
+
+  let done = doneList.length;
+
+  // Compteur
+  document.getElementById("doneCount").textContent = done;
+
+  // Barre progression
+  const max = exercises.length;
+  let percent = Math.round((done/max)*100);
+
+  let bar = document.getElementById("progress");
+  bar.style.width = percent+"%";
+  bar.textContent = percent+"%";
+
+  showHistory(history);
+
+});
+
+
+// ===================
+// FIN SÉANCE
+// ===================
+
 function finish(){
 
   let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
   let history = JSON.parse(localStorage.getItem("history")) || [];
 
   let today = new Date().toLocaleDateString();
-  let user = localStorage.getItem("username") || "Invité";
+  let userObj = JSON.parse(localStorage.getItem("user"));
+  let user = userObj ? userObj.name : "Invité";
 
   history.push({
     date: today,
@@ -449,7 +472,11 @@ function finish(){
   location.reload();
 }
 
-// Historique
+
+// ===================
+// HISTORIQUE
+// ===================
+
 function showHistory(history){
 
   let list = document.getElementById("historyList");
@@ -480,7 +507,6 @@ function showHistory(history){
   });
 
 }
-
 
 </script>
 
