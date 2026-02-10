@@ -266,32 +266,32 @@ Enregistrer
 
 <div class="cards">
 
-<a href="./nuque.html" class="card" onclick="goExercise(event, './nuque.html')">
+<a href="nuque.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-head-side-virus"></i>
 <h4>nuque</h4>
 </a>
 
-<a href="./epaules.html" class="card" onclick="goExercise(event, './epaules.html')">
+<a href="epaules.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-person-walking"></i>
 <h4>Épaules</h4>
 </a>
 
-<a href="./tronc.html" class="card" onclick="goExercise(event, './tronc.html')">
+<a href="tronc.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-rotate"></i>
 <h4>Tronc</h4>
 </a>
 
-<a href="./poignets.html" class="card" onclick="goExercise(event, './poignets.html')">
+<a href="poignets.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-hand"></i>
 <h4>Poignets</h4>
 </a>
 
-<a href="./jambes.html" class="card" onclick="goExercise(event, './jambes.html')">
+<a href="jambes.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-person-running"></i>
 <h4>Jambes</h4>
 </a>
 
-<a href="./dos.html" class="card" onclick="goExercise(event, './dos.html')">
+<a href="dos.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-person-rays"></i>
 <h4>Dos</h4>
 </a>
@@ -388,12 +388,10 @@ function saveUser(){
   location.reload();
 }
 
-// AJOUT PROGRESSION (IMPORTANT)
-function addProgress(){
+function addProgress(event){
 
   let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
 
-  // Trouver l'exercice cliqué
   let link = event.currentTarget.getAttribute("href");
   let id = link.replace(".html","");
 
@@ -403,6 +401,7 @@ function addProgress(){
   }
 
 }
+
 
 // Fin séance
 function finish(){
