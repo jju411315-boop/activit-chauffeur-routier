@@ -387,17 +387,39 @@ function saveUser(){
 
   location.reload();
 }
-
 function addProgress(event){
 
   let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
+  let history = JSON.parse(localStorage.getItem("history")) || [];
 
   let link = event.currentTarget.getAttribute("href");
   let id = link.replace(".html","");
 
+  // Noms propres
+  const names = {
+    nuque:"Nuque",
+    epaules:"Épaules",
+    tronc:"Tronc",
+    poignets:"Poignets",
+    jambes:"Jambes",
+    dos:"Dos"
+  };
+
   if(!doneList.includes(id)){
+
     doneList.push(id);
     localStorage.setItem("doneList", JSON.stringify(doneList));
+
+    let today = new Date().toLocaleDateString();
+    let user = localStorage.getItem("username") || "Invité";
+
+    history.push({
+      date: today,
+      action: names[id]+" terminé",
+      user: user
+    });
+
+    localStorage.setItem("history", JSON.stringify(history));
   }
 
 }
@@ -436,7 +458,7 @@ function showHistory(history){
 
   list.innerHTML = "";
 
-  history.reverse().forEach(item=>{
+  history.slice().reverse().forEach(item=>{
 
     let li = document.createElement("li");
 
@@ -445,14 +467,20 @@ function showHistory(history){
     li.style.margin="8px 0";
     li.style.borderRadius="10px";
 
-    li.textContent =
-      item.date+" → "+item.score+" ("+item.user+")";
+    if(item.action){
+      li.textContent =
+        item.date+" → "+item.action+" ("+item.user+")";
+    }else{
+      li.textContent =
+        item.date+" → "+item.score+" ("+item.user+")";
+    }
 
     list.appendChild(li);
 
   });
 
 }
+
 
 </script>
 
