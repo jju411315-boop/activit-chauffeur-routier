@@ -213,23 +213,72 @@ margin-top:50px;
 </nav>
 
 <header>
-  <section id="auth" style="text-align:center;margin:30px 0;">
+ /* AUTH PRO */
 
-<h3>🔐 Compte utilisateur</h3>
+.auth-container{
+  min-height:60vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-<div id="loginBox">
+.auth-card{
+  background:var(--card);
+  padding:35px 30px;
+  width:100%;
+  max-width:380px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  animation:fadeIn .6s ease;
+}
 
-  <input id="loginName" type="text" placeholder="Nom"
-  style="padding:10px;border-radius:10px;border:1px solid #ccc;"><br><br>
+.auth-card h2{
+  margin-bottom:20px;
+  color:var(--primary);
+}
 
-  <input id="loginPass" type="password" placeholder="Mot de passe"
-  style="padding:10px;border-radius:10px;border:1px solid #ccc;"><br><br>
+.auth-card input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:12px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
 
-  <button onclick="login()"
-  style="padding:8px 25px;border-radius:20px;border:none;
-  background:#0ea5e9;color:white;cursor:pointer;">
-  Connexion / Inscription
-  </button>
+.auth-card input:focus{
+  outline:none;
+  border-color:var(--secondary);
+}
+
+.auth-card button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:20px;
+  background:var(--secondary);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.auth-card button:hover{
+  opacity:.9;
+}
+
+#logoutBtn{
+  display:none;
+  background:#ef4444;
+  margin-top:10px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
 </div>
 
