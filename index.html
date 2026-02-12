@@ -10,14 +10,7 @@
 
 <style>
 
-  .stats{
-background:#e0f2fe;
-padding:15px;
-border-radius:15px;
-text-align:center;
-margin-bottom:20px;
-font-weight:bold;
-}
+/* VARIABLES */
 
 :root{
 --primary:#1e3a8a;
@@ -44,8 +37,9 @@ font-family:Segoe UI,Tahoma;
 body{
 background:var(--bg);
 color:var(--text);
-transition:0.3s;
+transition:.3s;
 }
+
 
 /* MENU */
 
@@ -81,6 +75,7 @@ font-size:20px;
 cursor:pointer;
 }
 
+
 /* HEADER */
 
 header{
@@ -89,6 +84,7 @@ color:white;
 text-align:center;
 padding:60px 20px;
 }
+
 
 /* SECTIONS */
 
@@ -104,36 +100,6 @@ margin-bottom:20px;
 font-size:28px;
 }
 
-/* PROGRESSION */
-
-.progress-container{
-background:#e5e7eb;
-border-radius:30px;
-overflow:hidden;
-height:28px;
-margin:15px 0;
-}
-
-.progress-bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,var(--secondary),var(--primary));
-color:white;
-font-weight:bold;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:.5s;
-}
-
-/* TIMER */
-
-.timer{
-font-size:20px;
-margin:15px 0;
-font-weight:bold;
-text-align:center;
-}
 
 /* CARDS */
 
@@ -165,105 +131,112 @@ color:var(--secondary);
 margin-bottom:10px;
 }
 
-/* BOUTON FIN */
 
-.finish-btn{
-display:none;
-margin:25px auto;
-padding:12px 25px;
-background:var(--secondary);
+/* PROGRESSION */
+
+.progress-container{
+background:#e5e7eb;
+border-radius:30px;
+overflow:hidden;
+height:28px;
+margin:15px 0;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--secondary),var(--primary));
+color:white;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.5s;
+}
+
+
+/* AUTH PRO */
+
+.auth-container{
+min-height:60vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.auth-card{
+background:var(--card);
+padding:35px 30px;
+width:100%;
+max-width:380px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+animation:fadeIn .6s ease;
+}
+
+.auth-card h2{
+margin-bottom:20px;
+color:var(--primary);
+}
+
+.auth-card input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:12px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+.auth-card input:focus{
+outline:none;
+border-color:var(--secondary);
+}
+
+.auth-card button{
+width:100%;
+padding:12px;
+margin-top:15px;
 border:none;
-border-radius:25px;
+border-radius:20px;
+background:var(--secondary);
 color:white;
 font-size:16px;
 cursor:pointer;
+transition:.3s;
 }
 
-.finish-btn:hover{
+.auth-card button:hover{
 opacity:.9;
 }
 
-/* FOOTER */
+#logoutBtn{
+display:none;
+background:#ef4444;
+margin-top:10px;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
 
 footer{
 background:var(--primary);
 color:white;
 text-align:center;
 padding:20px;
-margin-top:50px;
+margin-top:40px;
 }
 
 </style>
-  /* AUTH PRO */
-
-.auth-container{
-  min-height:60vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.auth-card{
-  background:var(--card);
-  padding:35px 30px;
-  width:100%;
-  max-width:380px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
-  animation:fadeIn .6s ease;
-}
-
-.auth-card h2{
-  margin-bottom:20px;
-  color:var(--primary);
-}
-
-.auth-card input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:12px;
-  border:1px solid #ccc;
-  font-size:15px;
-}
-
-.auth-card input:focus{
-  outline:none;
-  border-color:var(--secondary);
-}
-
-.auth-card button{
-  width:100%;
-  padding:12px;
-  margin-top:15px;
-  border:none;
-  border-radius:20px;
-  background:var(--secondary);
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.auth-card button:hover{
-  opacity:.9;
-}
-
-#logoutBtn{
-  display:none;
-  background:#ef4444;
-  margin-top:10px;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
 </head>
 
 <body>
+
+
+<!-- MENU -->
 
 <nav>
 <h2><i class="fa-solid fa-truck"></i> Chauffeur Routier</h2>
@@ -279,123 +252,60 @@ margin-top:50px;
 </ul>
 </nav>
 
+
+<!-- HEADER -->
+
 <header>
- /* AUTH PRO */
-
-.auth-container{
-  min-height:60vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.auth-card{
-  background:var(--card);
-  padding:35px 30px;
-  width:100%;
-  max-width:380px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
-  animation:fadeIn .6s ease;
-}
-
-.auth-card h2{
-  margin-bottom:20px;
-  color:var(--primary);
-}
-
-.auth-card input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:12px;
-  border:1px solid #ccc;
-  font-size:15px;
-}
-
-.auth-card input:focus{
-  outline:none;
-  border-color:var(--secondary);
-}
-
-.auth-card button{
-  width:100%;
-  padding:12px;
-  margin-top:15px;
-  border:none;
-  border-radius:20px;
-  background:var(--secondary);
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.auth-card button:hover{
-  opacity:.9;
-}
-
-#logoutBtn{
-  display:none;
-  background:#ef4444;
-  margin-top:10px;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-</div>
-
-<p id="welcomeText"></p>
-
-<button id="logoutBtn"
-onclick="logout()"
-style="display:none;margin-top:10px;">
-Déconnexion
-</button>
-
-</section>
-
 <h1>Routine d’échauffement</h1>
 <p>Prévention des risques professionnels</p>
 </header>
-<br><br>
+
+
+<!-- LOGIN -->
+
+<section id="auth" class="auth-container">
+
+<div class="auth-card">
+
+<h2><i class="fa-solid fa-user-lock"></i> Connexion</h2>
+
+<input id="loginName" type="text" placeholder="Nom d'utilisateur">
+
+<input id="loginPass" type="password" placeholder="Mot de passe">
+
+<button onclick="login()">Se connecter</button>
+
+<p id="welcomeText"></p>
+
+<button id="logoutBtn" onclick="logout()">Déconnexion</button>
+
+</div>
 
 </section>
+
+
+<!-- ROUTINE -->
 
 <section id="routine">
 
 <h3>Ta séance</h3>
-<div class="stats">
 
-  <p>📅 Aujourd’hui :</p>
-  <p>
-    Exercices terminés :
-    <span id="doneCount">0</span> / 6
-  </p>
+<p>
+Exercices terminés :
+<span id="doneCount">0</span> / 6
+</p>
 
-</div>
-
-<div class="timer">
-⏱️ Temps : <span id="time">00:00</span>
-</div>
-
-<p>Progression :</p>
 
 <div class="progress-container">
 <div id="progress" class="progress-bar">0%</div>
 </div>
 
-<p>Clique sur chaque exercice :</p>
 
 <div class="cards">
 
 <a href="nuque.html" class="card" onclick="addProgress(event)">
 <i class="fa-solid fa-head-side-virus"></i>
-<h4>nuque</h4>
+<h4>Nuque</h4>
 </a>
 
 <a href="epaules.html" class="card" onclick="addProgress(event)">
@@ -425,218 +335,190 @@ Déconnexion
 
 </div>
 
-<button id="finishBtn" class="finish-btn" onclick="finish()">
-🎉 Séance terminée
+<button onclick="finish()" style="margin-top:20px;padding:10px 25px;">
+🎉 Terminer
 </button>
 
 </section>
+
+
+<!-- HISTORIQUE -->
+
 <section id="history">
 
-<h3>📊 Historique des séances</h3>
+<h3>📊 Historique</h3>
 
-<ul id="historyList" style="list-style:none; padding:0;">
-</ul>
+<ul id="historyList" style="list-style:none;padding:0;"></ul>
 
 </section>
 
+
 <footer>
-<p>© 2026 - Site créé par JUJU411315</p>
+<p>© 2026 - JUJU411315</p>
 </footer>
+
 
 <script>
 
-// MODE SOMBRE
+// DARK MODE
 function toggleDark(){
-  document.body.classList.toggle("dark");
+document.body.classList.toggle("dark");
 }
 
 
-// ===================
 // AUTH
-// ===================
-
 function loadUser(){
 
-  let user = JSON.parse(localStorage.getItem("user"));
+let user = JSON.parse(localStorage.getItem("user"));
 
-  if(user){
+if(user){
 
-    document.getElementById("welcomeText").textContent =
-      "Bienvenue, "+user.name+" 👋";
+document.getElementById("welcomeText").textContent =
+"Bienvenue, "+user.name+" 👋";
 
-    document.querySelector(".auth-card").style.display="none";
-    document.getElementById("logoutBtn").style.display="inline";
+document.querySelector(".auth-card").style.display="none";
+document.getElementById("logoutBtn").style.display="inline";
 
-  }
+}
 
 }
 
 function login(){
 
-  let name = document.getElementById("loginName").value.trim();
-  let pass = document.getElementById("loginPass").value.trim();
+let name = loginName.value.trim();
+let pass = loginPass.value.trim();
 
-  if(name.length<2 || pass.length<3){
-    alert("Nom ou mot de passe trop court");
-    return;
-  }
+if(name.length<2 || pass.length<3){
+alert("Données invalides");
+return;
+}
 
-  localStorage.setItem("user", JSON.stringify({
-    name:name,
-    pass:pass
-  }));
+localStorage.setItem("user",JSON.stringify({name,pass}));
 
-  location.reload();
+location.reload();
 }
 
 function logout(){
-
-  localStorage.removeItem("user");
-  location.reload();
+localStorage.removeItem("user");
+location.reload();
 }
 
 
-// ===================
-// EXERCICES
-// ===================
+// DATA
+const exercises=["nuque","epaules","tronc","poignets","jambes","dos"];
 
-const exercises = ["nuque","epaules","tronc","poignets","jambes","dos"];
-
-const names = {
-  nuque:"Nuque",
-  epaules:"Épaules",
-  tronc:"Tronc",
-  poignets:"Poignets",
-  jambes:"Jambes",
-  dos:"Dos"
+const names={
+nuque:"Nuque",
+epaules:"Épaules",
+tronc:"Tronc",
+poignets:"Poignets",
+jambes:"Jambes",
+dos:"Dos"
 };
 
 
-// Quand on clique sur une carte
-function addProgress(event){
+// PROGRESS
+function addProgress(e){
 
-  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
-  let history = JSON.parse(localStorage.getItem("history")) || [];
+let doneList=JSON.parse(localStorage.getItem("doneList"))||[];
+let history=JSON.parse(localStorage.getItem("history"))||[];
 
-  let link = event.currentTarget.getAttribute("href");
-  let id = link.replace("./","").replace(".html","");
+let link=e.currentTarget.getAttribute("href");
+let id=link.replace(".html","");
 
-  if(!doneList.includes(id)){
+if(!doneList.includes(id)){
 
-    doneList.push(id);
-    localStorage.setItem("doneList", JSON.stringify(doneList));
+doneList.push(id);
 
-    let today = new Date().toLocaleDateString();
-    let userObj = JSON.parse(localStorage.getItem("user"));
-    let user = userObj ? userObj.name : "Invité";
+localStorage.setItem("doneList",JSON.stringify(doneList));
 
-    history.push({
-      date: today,
-      action: names[id]+" terminé",
-      user: user
-    });
+let today=new Date().toLocaleDateString();
+let user=JSON.parse(localStorage.getItem("user"))?.name||"Invité";
 
-    localStorage.setItem("history", JSON.stringify(history));
-  }
+history.push({
+date:today,
+action:names[id]+" terminé",
+user:user
+});
+
+localStorage.setItem("history",JSON.stringify(history));
+}
 
 }
 
 
-// ===================
-// CHARGEMENT
-// ===================
+// LOAD
+document.addEventListener("DOMContentLoaded",()=>{
 
-document.addEventListener("DOMContentLoaded", function(){
+loadUser();
 
-  loadUser();
+let doneList=JSON.parse(localStorage.getItem("doneList"))||[];
+let history=JSON.parse(localStorage.getItem("history"))||[];
 
-  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
-  let history = JSON.parse(localStorage.getItem("history")) || [];
+let done=doneList.length;
 
-  let done = doneList.length;
+doneCount.textContent=done;
 
-  // Compteur
-  document.getElementById("doneCount").textContent = done;
+let percent=Math.round((done/exercises.length)*100);
 
-  // Barre progression
-  const max = exercises.length;
-  let percent = Math.round((done/max)*100);
+progress.style.width=percent+"%";
+progress.textContent=percent+"%";
 
-  let bar = document.getElementById("progress");
-  bar.style.width = percent+"%";
-  bar.textContent = percent+"%";
-
-  showHistory(history);
+showHistory(history);
 
 });
 
 
-// ===================
-// FIN SÉANCE
-// ===================
-
+// FIN
 function finish(){
 
-  let doneList = JSON.parse(localStorage.getItem("doneList")) || [];
-  let history = JSON.parse(localStorage.getItem("history")) || [];
+let doneList=JSON.parse(localStorage.getItem("doneList"))||[];
+let history=JSON.parse(localStorage.getItem("history"))||[];
 
-  let today = new Date().toLocaleDateString();
-  let userObj = JSON.parse(localStorage.getItem("user"));
-  let user = userObj ? userObj.name : "Invité";
+let today=new Date().toLocaleDateString();
+let user=JSON.parse(localStorage.getItem("user"))?.name||"Invité";
 
-  history.push({
-    date: today,
-    score: doneList.length + "/6",
-    user: user
-  });
+history.push({
+date:today,
+score:doneList.length+"/6",
+user:user
+});
 
-  localStorage.setItem("history", JSON.stringify(history));
+localStorage.setItem("history",JSON.stringify(history));
+localStorage.removeItem("doneList");
 
-  localStorage.removeItem("doneList");
+alert("Séance enregistrée");
 
-  alert("🎉 Séance sauvegardée !");
-
-  location.reload();
+location.reload();
 }
 
 
-// ===================
-// HISTORIQUE
-// ===================
+// HISTO
+function showHistory(arr){
 
-function showHistory(history){
+let list=historyList;
+list.innerHTML="";
 
-  let list = document.getElementById("historyList");
+arr.slice().reverse().forEach(i=>{
 
-  if(!list) return;
+let li=document.createElement("li");
 
-  list.innerHTML = "";
+li.style.background="#e0f2fe";
+li.style.padding="10px";
+li.style.margin="6px 0";
+li.style.borderRadius="10px";
 
-  history.slice().reverse().forEach(item=>{
+li.textContent=i.action
+?`${i.date} → ${i.action} (${i.user})`
+:`${i.date} → ${i.score} (${i.user})`;
 
-    let li = document.createElement("li");
+list.appendChild(li);
 
-    li.style.background="#e0f2fe";
-    li.style.padding="10px";
-    li.style.margin="8px 0";
-    li.style.borderRadius="10px";
-
-    if(item.action){
-      li.textContent =
-        item.date+" → "+item.action+" ("+item.user+")";
-    }else{
-      li.textContent =
-        item.date+" → "+item.score+" ("+item.user+")";
-    }
-
-    list.appendChild(li);
-
-  });
+});
 
 }
 
 </script>
-
 
 </body>
 </html>
