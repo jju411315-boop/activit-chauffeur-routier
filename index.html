@@ -527,34 +527,55 @@ historyList.appendChild(li);
 });
 
 }
-/* CHANGE PASSWORD */
+// =======================
+// NAV USER MENU
+// =======================
 
-function openPassword(){
-
-let oldPass = prompt("Ancien mot de passe :");
-let newPass = prompt("Nouveau mot de passe :");
-
-if(!oldPass || !newPass) return;
+function updateNavbar(){
 
 let user = JSON.parse(localStorage.getItem("user"));
-let users = getUsers();
 
-let real = users.find(u=>u.name===user.name);
+let area = document.getElementById("userArea");
 
-if(real.pass!==oldPass){
-alert("Ancien mot de passe incorrect");
-return;
-}
+if(user){
 
-real.pass = newPass;
+area.style.display="block";
+document.getElementById("navUserName").textContent = user.name;
 
-saveUsers(users);
+}else{
 
-localStorage.setItem("user",JSON.stringify(real));
-
-alert("Mot de passe modifié ✅");
+area.style.display="none";
 
 }
+
+}
+
+
+function toggleUserMenu(){
+
+let menu = document.getElementById("userDropdown");
+
+menu.style.display = menu.style.display==="block"
+? "none"
+: "block";
+
+}
+
+
+// Fermer menu quand on clique ailleurs
+document.addEventListener("click",(e)=>{
+
+let btn = document.getElementById("userBtn");
+let menu = document.getElementById("userDropdown");
+
+if(!btn || !menu) return;
+
+if(!btn.contains(e.target) && !menu.contains(e.target)){
+menu.style.display="none";
+}
+
+});
+
 
 </script>
 
