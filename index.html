@@ -48,17 +48,47 @@ align-items:center;
 padding:15px 25px;
 background:var(--card);
 box-shadow:0 4px 12px rgba(0,0,0,.1);
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 nav ul{
 display:flex;
 list-style:none;
 gap:15px;
+align-items:center;
 }
 
-nav a{color:var(--text);text-decoration:none}
+nav a{
+color:var(--text);
+text-decoration:none;
+font-weight:500;
+}
 
-.dark-btn{border:none;background:none;font-size:20px;cursor:pointer}
+.dark-btn{
+border:none;
+background:none;
+font-size:20px;
+cursor:pointer;
+}
+
+
+/* USER DROPDOWN */
+
+#userBtn{
+padding:6px 10px;
+border-radius:8px;
+}
+
+#userBtn:hover{
+background:rgba(0,0,0,0.05);
+}
+
+#userDropdown button:hover{
+background:#f1f5f9;
+}
+
 
 /* HEADER */
 
@@ -495,6 +525,34 @@ li.textContent=i.action
 historyList.appendChild(li);
 
 });
+
+}
+/* CHANGE PASSWORD */
+
+function openPassword(){
+
+let oldPass = prompt("Ancien mot de passe :");
+let newPass = prompt("Nouveau mot de passe :");
+
+if(!oldPass || !newPass) return;
+
+let user = JSON.parse(localStorage.getItem("user"));
+let users = getUsers();
+
+let real = users.find(u=>u.name===user.name);
+
+if(real.pass!==oldPass){
+alert("Ancien mot de passe incorrect");
+return;
+}
+
+real.pass = newPass;
+
+saveUsers(users);
+
+localStorage.setItem("user",JSON.stringify(real));
+
+alert("Mot de passe modifié ✅");
 
 }
 
